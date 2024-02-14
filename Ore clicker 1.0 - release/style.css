@@ -1,0 +1,366 @@
+/*Background for the entire page*/
+html {
+  background: url(Images/htmlBackgrounds/htmlBg.jpg);
+}
+
+/*Styles the font, color and size of the main title*/
+#mainTitle {
+  font-size: 40px;
+  color: white;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+/*Aligns the top 3 panels to be in a row*/
+#panelContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+}
+
+/*Both the right and the left panel have a bit of margin from the middle panel*/
+#rightPanel {
+  margin-left: 3px;
+}
+#leftPanel {
+  margin-right: 3px;
+}
+
+/*Styles the look, width and height of the right panel and left panel, as well as everything flex box related*/
+#rightPanel, #leftPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid #332217;
+  border-radius: 10px;
+  height: 700px;
+  width: 25%;
+  background-color: #402e1c;
+}
+
+/*Styles the look of the middle panel, the background image of the middle panel that will later change, and everything flex box related*/
+#middlePanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 5px solid #332217;
+  border-radius: 10px;
+  height: 700px;
+  width: 50%;
+  background: url(Images/middleBackgrounds/dirtbg.png);
+  overflow-x: scroll;
+}
+
+/*Styles the panel right below the 3 main panels, its width, height, looks and everything flex related*/
+#bottomPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid #332217;
+  border-radius: 10px;
+  height: 260px;
+  width: 99%;
+  margin-top: 3px;
+  background-color: #402e1c;
+}
+
+/*Styles the hack panel and the miscellaneous panel, their looks, width and flex related things. Also it has no specific height specified*/
+#miscPanel, #hackPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid #332217;
+  border-radius: 10px;
+  width: 99%;
+  margin-top: 3px;
+  background-color: #402e1c;
+}
+
+/*Styles the buttons of the miscellaneous panel, their font size, flex related things and size*/
+.miscPanelButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 50px;
+  border: 3px solid black;
+  margin: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #fef7d7;
+}
+
+/*Styles the image size of the pickaxe as well as its transition*/
+#pickaxe {
+  height: 250px;
+  width: 250px;
+  transition: 0.1s ease-out;
+}
+
+/*Increases the pickaxe size on hover*/
+#pickaxe:hover {
+  transform: scale(1.2, 1.2);
+}
+
+/*Removes the background and border of the pickaxe button*/
+#pickaxeButton {
+  background: none;
+  border: none;
+}
+
+/*Changes the font of the ores counter and the ores per second counter*/
+#ores, #oresPerSecond {
+  font-family: Arial, sans-serif;
+}
+
+/*Makes the ores per second a slightly smaller font*/
+#oresPerSecond {
+  font-size: 15px;
+}
+
+/*Styles the smaller titles that appear commonly throughout the game*/
+.subTitles {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+}
+
+/*Styles the upgrades panel and the building panel, centers everything inside in a column, changes the border/background, as well as the height/width*/
+#upgrades, #buildings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px solid #332217;
+  width: 90%;
+  height: 290px;
+  overflow: scroll;
+  background-color: #ae7842;
+}
+
+/*Styles the looks and width/height of the achievement panel*/
+#achievementsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  border: 4px solid #332217;
+  width: 60%;
+  height: 130px;
+  overflow-y: scroll;
+  background-color: #ae7842;
+  justify-content: center;
+}
+
+/*Styles the achievements themselves, aligning them in a row and setting their height/width*/
+.achievement {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 400px;
+  background-color: #fef7d7;
+  border: 3px solid black;
+  margin: 5px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/*Sets the size for the images that appear within the achievement boxes*/
+.achievement img {
+  height: 60px;
+  width: 60px;
+}
+
+/*Removes the margin from the top of the text that appears inside achievement boxes*/
+.achievement p {
+  margin-top: 0px;
+}
+
+/*Styles the panels that hold the buttons for exo trading and playstyles. This sets their height/width, sets their borders/background and sets the display to none because they're supposed to appear once the player reaches 30k ores*/
+#playstyle, #exoTrading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 4px solid #332217;
+  width: 90%;
+  height: 300px;
+  background-color: #ae7842;
+  display: none;
+}
+
+/*Sets the overflow to scroll for the playstyle panel*/
+#playstyle {
+  overflow: scroll;
+}
+
+/*Sets the overflow-y to scroll for the exo trading panel*/
+#exoTrading {
+  overflow-y: scroll;
+}
+
+/*Styles the exo shard exchange button. It sets up everything flex-related, its width/height, its border/background and font size*/
+#oresForExoShardsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 150px;
+  height: 50px;
+  border: 3px solid black;
+  margin: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #fef7d7;
+}
+
+/*Styles the buttons that exchange exo shards for upgrades. This styles their width/height, font size, background and border*/
+.exoShardUpgrades {
+  width: 150px;
+  height: 60px;
+  font-size: 15px;
+  background-color: #fef7d7;
+  border: 3px solid black;
+}
+
+/*Sets up 2 texts that tell the player how many exo shards they own and what their current playstyle is. This sets its font, font size and color*/
+#exoShardsOwned, #currentPlaystyle {
+  margin: 0;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/*Styles the playstyle buttons, setting up everything flex related, width/height, font size and margin*/
+.playstyleButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 200px;
+  height: 75px;
+  border: 3px solid black;
+  margin: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #fef7d7;
+}
+
+/*Styles the upgrade buttons, everything flex related, width, height, border, background, font size and gives it 100 margin to the left to avoid the buttons going outside the panel where you cant scroll to them*/
+.upgradesButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 300px;
+  height: 50px;
+  border: 3px solid black;
+  margin: 3px;
+  margin-left: 100px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #fef7d7;
+}
+
+/*Changes the background color of buttons when you hover on them*/
+.upgradesButtons:hover, .playstyleButtons:hover, #oresForExoShardsButton:hover, .exoShardUpgrades:hover, .miscPanelButtons:hover {
+  background-color: #fdefaf;
+}
+
+/*Changes the size of images inside the upgrade buttons and playstyle buttons*/
+.upgradesButtons img, .playstyleButtons img {
+  height: 30px;
+  width: 30px;
+}
+
+/*Styles the little description sentences, making them smaller and gray*/
+.descr {
+  color: #858585;
+  font-size: 14px;
+}
+
+/*Hides most of the upgrades other than the first 2 upgrades so that the player has to unlock upgrades*/
+#apple, #stonepick, #ironpick, #silverpick, #ledmouse, #radio, #platinumpick, #burger, #goldpick, #google, #ducttape, #diamondpick, #motivationalspeech, #drone, #cosmicmouse, #titaniumpick, #tacobell, #sausage, #subwaysurfersGP, #jadepick, #chatgpt, #uranium, #rubypick, #coal, #iron, #silver, #platinum, #deeper, #gold, #diamond, #titanium, #jade, #ruby, #everything {
+  display: none;
+}
+
+/*Hides all the achievements so that the player can unlock them as they progress*/
+#clickAchievement1, #clickAchievement2, #clickAchievement3, #clickAchievement4, #clickAchievement5, #clickAchievement6, #oresAchievement1, #oresAchievement2, #oresAchievement3, #oresAchievement4, #oresAchievement5, #randomnessAchievement, #invisibleButtonAchievement, #exoTraderAchievement1, #exoTraderAchievement2, #exoTraderAchievement3, #exoTraderAchievement4, #exoTraderAchievement5, #exoTraderAchievement6, #timeSpentAchievement1, #timeSpentAchievement2, #timeSpentAchievement3, #hackingAchievement1, #hackingAchievement2, #hackingAchievement3 {
+  display: none;
+}
+
+/*Styles the texts that tell the player hasn't unlocked exo trading/playstyles. It sets their color and font size*/
+#playstylesLockedStatus, #exoTradingLockedStatus {
+  font-size: 20px;
+  color: gray;
+}
+
+/*Removes the margin from the easter egg time notifier*/
+#easterEggTimerNotifier {
+  margin: 0px;
+}
+
+/*Makes the random button invisible and sets its height/width*/
+#randomButton {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: none;
+}
+
+/*Sets the width for the tips and references div, the font, font size and the weight*/
+#tips, #references {
+  width: 600px;
+  font-family: 'Courier New', monospace;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/*Styles the bullet points for the list of tips to a green crystal*/
+#tips ul {
+  list-style-image: url(Images/Misc/listBulletPoint.png);
+}
+
+/*Styles the bullet points for the list of references to a blue crystal*/
+#references ul {
+  list-style-image: url(Images/Misc/listBulletPoint2.png);
+}
+
+/*Hides the hack panel, the tips and references. They will appear if the player clicks on a button that brings them up*/
+#tips, #references, #hackPanel {
+  display: none;
+}
+
+/*Removes the margin from the title that says whether the player is viewing tips/references*/
+#tipsOrReferencesTitle {
+  margin-bottom: 0px;
+}
+
+/*Aligns the miscellaneous panel buttons in a row*/
+#miscPanelButtonAlign {
+  display: flex;
+  flex-direction: row;
+}
+
+/*Aligns the hack panel buttons in a row, allows wrapping and centers them*/
+.hacksButtonRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*Styles the hack buttons themselves, setting their height, border, font size and background color*/
+.hacksButtonRow button {
+  height: 30px;
+  border: 3px solid black;
+  font-size: 20px;
+  background-color: #44ff00;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+/*Changes the background color on hack buttons when they're hovered on*/
+.hacksButtonRow button:hover {
+  background-color: #0cb800;
+}

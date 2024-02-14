@@ -1,0 +1,297 @@
+<!--Declaring a bunch of important stuff-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ore clicker</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!--Main title-->
+    <h1 id="mainTitle">Ore clicker</h1>
+    <!--Aligns the left/right/middle panels in a row-->
+    <div id="panelContainer">
+      <!--Left panel that features exo trading and playstyles-->
+      <div id="leftPanel">
+        <!--Playstyles title and a "locked" message-->
+        <h2 class="subTitles">Playstyles</h2>
+        <h2 class="subTitles" id="playstylesLockedStatus">(reach 30k ores to unlock playstyles)</h2>
+        <!--A smaller panel that has the playstyle buttons-->
+        <div id="playstyle">
+          <!--Click playstyle button-->
+          <button class="playstyleButtons" onclick="clickPlaystyle()"><img src="Images/Playstyles/carpaltunnel.png">carpal tunnel<p class="descr">+25% click effectivenes, -25% building effectivenes</p></button>
+          <!--Sleep playstyle button-->
+          <button class="playstyleButtons" onclick="sleepPlaystyle()"><img src="Images/Playstyles/sleepmode.png">honk mimimi<p class="descr">-25% click effectivenes, +25% building effectivenes</p></button>
+          <!--Normal playstyle button-->
+          <button class="playstyleButtons" onclick="normalPlaystyle()">normal<p class="descr">this is definitely a moment of all time</p></button>
+          <!--A mini title that tells which playstyle the player is on-->
+          <h3 id="currentPlaystyle">Currently selected: normal</h3>
+        </div>
+        <!--Exo trading title and a "locked" message-->
+        <h2 class="subTitles">Exo trading</h2>
+        <h2 class="subTitles" id="exoTradingLockedStatus">(reach 30k ores to unlock exo trading)</h2>
+        <!--A smaller panel with a bunch of exo trading buttons-->
+        <div id="exoTrading">
+          <!--A button that converts ores to exo shards-->
+          <button id="oresForExoShardsButton" onclick="exoShardConversion()">100k ores = 1 exo shard</button>
+          <!--A smaller title telling how many exo shards the player has-->
+          <h3 id="exoShardsOwned">Exo shards owned: 0</h3>
+          <!--Click upgrade button-->
+          <button class="exoShardUpgrades" id="exoClickEffUpgrade" onclick="exoClickEffUpgradeFunction()">Clicking efficiency + 10% 0/3 Cost: 1 exo shard</button>
+          <!--Building upgrade button-->
+          <button class="exoShardUpgrades" id="exoBuildEffUpgrade" onclick="exoBuildEffUpgradeFunction()">Building efficiency + 10% 0/3 Cost: 1 exo shard</button>
+          <!--Building discount upgrade-->
+          <button class="exoShardUpgrades" id="exoBuildDiscountUpgrade" onclick="exoBuildDiscountUpgradeFunction()">Building prices - 2% 0/3 Cost: 1 exo shard</button>
+          <!--Exo shards discount upgrade-->
+          <button class="exoShardUpgrades" id="exoShardDiscountUpgrade" onclick="exoShardDiscountUpgradeFunction()">Exo shard cost - 5k 0/3 Cost: 1 exo shard</button>
+        </div>
+      </div>
+      <!--Main (middle) panel with the pickaxe & backgrounds (the pickaxe & backgrounds change)-->
+      <div id="middlePanel">
+        <!--Ores title and a subtitle that tells your ores per second-->
+        <h2 id="ores">Ores: 0</h2>
+        <h2 id="oresPerSecond">Ores per second: 0</h2>
+        <!--The pickaxe-->
+        <button id="pickaxeButton"><img src="Images/Pickaxes/woodenpick.png" alt="pickaxe" id="pickaxe" onclick="playerClickedPickaxe()"></button>
+      </div>
+      <!--Right panel with buildings/upgrades-->
+      <div id="rightPanel">
+        <!--A buildings title-->
+        <h2 class="subTitles">Buildings:</h2>
+        <!--A smaller panel with the building buttons-->
+        <div id="buildings">
+          <!--Buying cursors button-->
+          <button class="upgradesButtons" onclick="buyingCursors()"><img src="Images/Buildings/cursor.png"><p id="cursors">0 Cursors, Cost: 10</p></button>
+          <!--Buying worms button-->
+          <button class="upgradesButtons" onclick="buyingWorms()"><img src="Images/Buildings/worm.png"><p id="worms">0 Worms, Cost: 3000</p></button>
+          <!--Buying dwarfs button-->
+          <button class="upgradesButtons" onclick="buyingDwarfs()"><img src="Images/Buildings/dwarf.png"><p id="dwarfs">0 Dwarfs, Cost: 53000</p></button>
+          <!--Buying robots button-->
+          <button class="upgradesButtons" onclick="buyingRobots()"><img src="Images/Buildings/robot.png"><p id="robots">0 Robots, Cost: 5600000</p></button>
+          <!--Buying missiles button-->
+          <button class="upgradesButtons" onclick="buyingMissiles()"><img src="Images/Buildings/missile.png"><p id="missiles">0 Highly explosive missles, Cost: 140000000</p></button>
+        </div>
+        <!--An upgrades title-->
+        <h2 class="subTitles">Upgrades:</h2>
+        <!--A panel with all the upgrades-->
+        <div id="upgrades">
+          <!--Office mouse upgrade-->
+          <button class="upgradesButtons" id="officemouse" onclick="officeMouseUpgradeFunction()"><img src=Images/Upgrades/mouse.png><p>Office mouse (50)</p> <p class="descr">this is a certified office mouse</p></button>
+          <!--Office mouse upgrade button-->
+          <button class="upgradesButtons" id="stone" onclick="stoneUpgradeFunction()"><img src=Images/Upgrades/stone.png><p>Unlock stone (100)</p> <p class="descr">dwayne the rock johnson</p></button>
+          <!--Stone pickaxe upgrade button-->
+          <button class="upgradesButtons" id="stonepick" onclick="stonePickUpgradeFunction()"><img src=Images/Pickaxes/stonepick.png><p>Stone pickaxe (100)</p> <p class="descr">Isn't that from minecraft?</p></button>
+          <!--Coal upgrade button-->
+          <button class="upgradesButtons" id="coal" onclick="coalUpgradeFunction()"><img src=Images/Upgrades/coal.png><p>Unlock coal (500)</p> <p class="descr">doesn't even unlock a pickaxe (useless)</p></button>
+          <!--Iron upgrade button-->
+          <button class="upgradesButtons" id="iron" onclick="ironUpgradeFunction()"><img src=Images/Upgrades/iron.png><p>Unlock iron (1k)</p> <p class="descr">dwayne the Fe(II)johnson</p></button>
+          <!--Iron pickaxe upgrade button-->
+          <button class="upgradesButtons" id="ironpick" onclick="ironPickUpgradeFunction()"><img src=Images/Pickaxes/ironpick.png><p>Iron pickaxe (1k)</p> <p class="descr">Yup, minecraft ripoff</p></button>
+          <!--Apple upgrade button-->
+          <button class="upgradesButtons" id="apple" onclick="appleUpgradeFunction()"><img src=Images/Upgrades/apple.png><p>Apple (15k)</p> <p class="descr">1 apple a day doubles worm efficiency</p></button>
+          <!--Silver upgrade button-->
+          <button class="upgradesButtons" id="silver" onclick="silverUpgradeFunction()"><img src=Images/Upgrades/silver.png><p>Unlock silver (10k)</p> <p class="descr">silver the dwayne</p></button>
+          <!--Silver pickaxe upgrade button-->
+          <button class="upgradesButtons" id="silverpick" onclick="silverPickUpgradeFunction()"><img src=Images/Pickaxes/silverpick.png><p>Silver pickaxe (10k)</p> <p class="descr">nvm its a terraria ripoff</p></button>
+          <!--LED mouse upgrade button-->
+          <button class="upgradesButtons" id="ledmouse" onclick="ledMouseUpgradeFunction()"><img src=Images/Upgrades/ledmouse.png><p>LED Mouse (25k)</p> <p class="descr">with 20% more rgb</p></button>
+          <!--Radio upgrade button-->
+          <button class="upgradesButtons" id="radio" onclick="radioUpgradeFunction()"><img src=Images/Upgrades/radio.png><p>Radio (5m)</p> <p class="descr">I am a dwarf and im digging a hole</p></button>
+          <!--Platinum upgrade button-->
+          <button class="upgradesButtons" id="platinum" onclick="platinumUpgradeFunction()"><img src=Images/Upgrades/platinum.png><p>Unlock platinum (100k)</p> <p class="descr">the platinum dwayne</p></button>
+          <!--Platinum pickaxe upgrade button-->
+          <button class="upgradesButtons" id="platinumpick" onclick="platinumPickUpgradeFunction()"><img src=Images/Pickaxes/platinumpick.png><p>Platinum pickaxe (100k)</p> <p class="descr">yup still terraria ripoff</p></button>
+          <!--Burger upgrade button-->
+          <button class="upgradesButtons" id="burger" onclick="burgerUpgradeFunction()"><img src=Images/Upgrades/burger.png><p>Burger (730k)</p> <p class="descr">a burger a day keeps worms 10x more effective</p></button>
+          <!--Go deeper upgrade button-->
+          <button class="upgradesButtons" id="deeper" onclick="deeperUpgradeFunction()"><img src=Images/Upgrades/deeper.png><p>Go deeper (50k)</p> <p class="descr">required to unlock gold</p></button>
+          <!--Gold upgrade button-->
+          <button class="upgradesButtons" id="gold" onclick="goldUpgradeFunction()"><img src=Images/Upgrades/gold.png><p>Unlock gold (1m)</p> <p class="descr">me when the gold is 23.99 carat:</p></button>
+          <!--Gold pickaxe upgrade button-->
+          <button class="upgradesButtons" id="goldpick" onclick="goldPickUpgradeFunction()"><img src=Images/Pickaxes/goldpick.png><p>Gold pickaxe (1m)</p> <p class="descr">idk what to say here</p></button>
+          <!--Google upgrade button-->
+          <button class="upgradesButtons" id="google" onclick="googleUpgradeFunction()"><img src=Images/Upgrades/google.png><p>Google the solution (1m)</p> <p class="descr">microsoft edge sucks</p></button>
+          <!--Duct tape upgrade button-->
+          <button class="upgradesButtons" id="ducttape" onclick="ductTapeUpgradeFunction()"><img src=Images/Upgrades/ducttape.png><p>Duct tape the robots (5m)</p> <p class="descr">duck tape</p></button>
+          <!--Diamond upgrade button-->
+          <button class="upgradesButtons" id="diamond" onclick="diamondUpgradeFunction()"><img src=Images/Upgrades/diamond.png><p>Unlock diamond (10m)</p> <p class="descr">idk what to say here</p></button>
+          <!--Diamond pickaxe upgrade button-->
+          <button class="upgradesButtons" id="diamondpick" onclick="diamondPickUpgradeFunction()"><img src=Images/Pickaxes/diamondpick.png><p>Diamond pickaxe (10m)</p> <p class="descr">netherite better</p></button>
+          <!--Motivational speech upgrade button-->
+          <button class="upgradesButtons" id="motivationalspeech" onclick="motivationalSpeechUpgradeFunction()"><img src=Images/Upgrades/motivationalspeech.png><p>Motivational speech (10.5m)</p> <p class="descr">never back down never what</p></button>
+          <!--Drone upgrade button-->
+          <button class="upgradesButtons" id="drone" onclick="droneUpgradeFunction()"><img src=Images/Upgrades/drone.png><p>Drone strike (11m)</p> <p class="descr">with a side of drone strike</p></button>
+          <!--Cosmic mouse upgrade button-->
+          <button class="upgradesButtons" id="cosmicmouse" onclick="cosmicMouseUpgradeFunction()"><img src=Images/Upgrades/cosmicmouse.png><p>Cosmic mouse (26m)</p> <p class="descr">wait this isnt the right mouse</p></button>
+          <!--Titanium upgrade button-->
+          <button class="upgradesButtons" id="titanium" onclick="titaniumUpgradeFunction()"><img src=Images/Upgrades/titanium.png><p>Unlock titanium (100m)</p> <p class="descr">.</p></button>
+          <!--Titanium pickaxe upgrade button-->
+          <button class="upgradesButtons" id="titaniumpick" onclick="titaniumPickUpgradeFunction()"><img src=Images/Pickaxes/titaniumpick.png><p>Titanium pickaxe (100m)</p> <p class="descr">why titanium? mithril is fine</p></button>
+          <!--Taco bell upgrade button-->
+          <button class="upgradesButtons" id="tacobell" onclick="tacoBellUpgradeFunction()"><img src=Images/Upgrades/tacobell.png><p>Taco bell fuel (122m)</p> <p class="descr">"give his plumber a medal"</p></button>
+          <!--Sausage upgrade button-->
+          <button class="upgradesButtons" id="sausage" onclick="sausageUpgradeFunction()"><img src=Images/Upgrades/sausage.png><p>Interdimentional sausage (7.1b)</p> <p class="descr">i shall feast upon your essence regardless</p></button>
+          <!--Subway surfers gameplay upgrade button-->
+          <button class="upgradesButtons" id="subwaysurfersGP" onclick="subwaySurfersGPUpgradeFunction()"><img src=Images/Upgrades/subwaysurfers.png><p>SS gameplay (14.8b)</p> <p class="descr">Math.floor (attentionSpan *= 0.1);</p></button>
+          <!--Jade upgrade button-->
+          <button class="upgradesButtons" id="jade" onclick="jadeUpgradeFunction()"><img src=Images/Upgrades/jade.png><p>Unlock jade (10b)</p> <p class="descr">topaz is also cool</p></button>
+          <!--Jade pickaxe upgrade button-->
+          <button class="upgradesButtons" id="jadepick" onclick="jadePickUpgradeFunction()"><img src=Images/Pickaxes/jadepick.png><p>Jade pickaxe (100b)</p> <p class="descr">gemstones are dope</p></button>
+          <!--Chat GPT upgrade button-->
+          <button class="upgradesButtons" id="chatgpt" onclick="chatgptUpgradeFunction()"><img src=Images/Upgrades/chatgpt.png><p>Ask chatGPT for help (161b)</p> <p class="descr">robots love chatGPT</p></button>
+          <!--Uranium upgrade button-->
+          <button class="upgradesButtons" id="uranium" onclick="uraniumUpgradeFunction()"><img src=Images/Upgrades/uranium.png><p>Uranium acid (199b)</p> <p class="descr">"i spilled my drink"</p></button>
+          <!--Ruby upgrade button-->
+          <button class="upgradesButtons" id="ruby" onclick="rubyUpgradeFunction()"><img src=Images/Upgrades/ruby.png><p>Unlock ruby (100b)</p> <p class="descr">illuminates the darkest of caves</p></button>
+          <!--Ruby pickaxe upgrade button-->
+          <button class="upgradesButtons" id="rubypick" onclick="rubyPickUpgradeFunction()"><img src=Images/Pickaxes/rubypick.png><p>Ruby pickaxe (1t)</p> <p class="descr">these pickaxe are not symmetrical</p></button>
+          <!--Everything upgrade button-->
+          <button class="upgradesButtons" id="everything" onclick="everythingUpgradeFunction()"><img src=Images/Upgrades/everything.png><p>Everything<br>100t</p> <p class="descr">this is everything.<br>everything.<br>e v e r y t h i n g</p></button>
+        </div>
+      </div>
+    </div>
+    <!--A div for the bottom panel, which has achievements and a timer of how long you play-->
+    <div id="bottomPanel">
+      <!--A timer of how long you've been playing for-->
+    <h2 class="subTitles"  id="stopwatchTimer">You've been playing for: 0 hours 0 minutes 0 seconds</h2>
+    <h2 class="subTitles" id="easterEggTimerNotifier"></h2>
+      <!--Achievements title-->
+      <h2 class="subTitles">Achievements</h2>
+      <!--A smaller panel that contains all the achievements-->
+      <div id="achievementsContainer">
+        <!--Clicking achievement 1-->
+        <div class="achievement" id="clickAchievement1"><img src="Images/Achievements/click1.png"><p>Clickity click</p> <p class="descr">you have begun your clicker career by clicking 10 times</p></div>
+        <!--Clicking achievement 2-->
+        <div class="achievement" id="clickAchievement2"><img src="Images/Achievements/click2.png"><p>Not bad...</p> <p class="descr">100 clicks is not a number to be messed with</p></div>
+        <!--Clicking achievement 3-->
+        <div class="achievement" id="clickAchievement3"><img src="Images/Achievements/click3.png"><p>Clicker clickerson</p> <p class="descr">you clicked 500 times. tired yet?</p></div>
+        <!--Clicking achievement 4-->
+        <div class="achievement" id="clickAchievement4"><img src="Images/Achievements/click4.png"><p>Autoclicker</p> <p class="descr">you clicked 1000 times, you have to be tired</p></div>
+        <!--Clicking achievement 5-->
+        <div class="achievement" id="clickAchievement5"><img src="Images/Achievements/click5.png"><p>Autoclicker hivemind</p> <p class="descr">you clicked 2000 times</p></div>
+        <!--Clicking achievement 6-->
+        <div class="achievement" id="clickAchievement6"><img src="Images/Achievements/click6.png"><p>Opal cursor trophy</p> <p class="descr">clicking is your last name (1m clicks)</p></div>
+        <!--Ores owned achievement 1-->
+        <div class="achievement" id="oresAchievement1"><img src="Images/Achievements/money1.png"><p>New money opportunity</p> <p class="descr">you mined your first bit of ores (100 ores)</p></div>
+        <!--Ores owned achievement 2-->
+        <div class="achievement" id="oresAchievement2"><img src="Images/Achievements/money2.png"><p>Good business</p> <p class="descr">your business is thriving (10k ores)</p></div>
+        <!--Ores owned achievement 3-->
+        <div class="achievement" id="oresAchievement3"><img src="Images/Achievements/money3.png"><p>Immaculate business</p> <p class="descr">dont get too greedy (1m ores)</p></div>
+        <!--Ores owned achievement 4-->
+        <div class="achievement" id="oresAchievement4"><img src="Images/Achievements/money4.png"><p>Too much money</p> <p class="descr">you make too much ores (100m ores)</p></div>
+        <!--Ores owned achievement 5-->
+        <div class="achievement" id="oresAchievement5"><img src="Images/Achievements/money5.png"><p>Money overflow</p> <p class="descr">ores have overtaken the economy (10b ores)</p></div>
+        <!--Exo trader achievement 1-->
+        <div class="achievement" id="exoTraderAchievement1"><img src="Images/Achievements/exoTrader1.png"><p>Exo path</p> <p class="descr">one exo shard</p></div>
+        <!--Exo trader achievement 2-->
+        <div class="achievement" id="exoTraderAchievement2"><img src="Images/Achievements/exoTrader2.png"><p>Exo road</p> <p class="descr">four exo shards</p></div>
+        <!--Exo trader achievement 3-->
+        <div class="achievement" id="exoTraderAchievement3"><img src="Images/Achievements/exoTrader3.png"><p>Exo highway</p> <p class="descr">trading for exo shards like its nothing</p></div>
+        <!--Exo trader achievement 4-->
+        <div class="achievement" id="exoTraderAchievement4"><img src="Images/Achievements/exoTrader4.png"><p>Exo portal</p> <p class="descr">trading expert</p></div>
+        <!--Exo trader achievement 5-->
+        <div class="achievement" id="exoTraderAchievement5"><img src="Images/Achievements/exoTrader5.png"><p>Exo wormhole</p> <p class="descr">thats enough trading</p></div>
+        <!--Exo trader achievement 6-->
+        <div class="achievement" id="exoTraderAchievement6"><img src="Images/Achievements/exoTrader6.png"><p>Interdimentional<br> exo rift</p> <p class="descr">you can stop now</p></div>
+        <!--A randomness achievement that you get for a bunch of random things-->
+        <div class="achievement" id="randomnessAchievement"><img src="Images/Achievements/randomness.png"><p>What is this?</p> <p class="descr">how did you even get here</p></div>
+        <!--An achievement you get for clicking an invisible button-->
+        <div class="achievement" id="invisibleButtonAchievement"><img src="Images/Achievements/invisibleButton.png"><p>Invisible button</p> <p class="descr">how did you know it was there</p></div>
+        <!--Time spent achievement 1-->
+        <div class="achievement" id="timeSpentAchievement1"><img src="Images/Achievements/timeSpent1.png"><p>Having fun</p> <p class="descr">you must be maxed out</p></div>
+        <!--Time spent achievement 2-->
+        <div class="achievement" id="timeSpentAchievement2"><img src="Images/Achievements/timeSpent2.png"><p>What are you even grinding</p> <p class="descr">time to sleep</p></div>
+        <!--Time spent achievement 3-->
+        <div class="achievement" id="timeSpentAchievement3"><img src="Images/Achievements/timeSpent3.png"><p>4th dimension</p> <p class="descr">you own time itself</p></div>
+        <!--An achievement you get for clicking the "Hax" button-->
+        <div class="achievement" id="hackingAchievement1"><img src="Images/Achievements/hacking1.png"><p>Hacking?</p> <p class="descr">why did click on the hack panel?</p></div>
+        <!--An achievement you get for actually hacking once-->
+        <div class="achievement" id="hackingAchievement2"><img src="Images/Achievements/hacking2.png"><p>Hacking.</p> <p class="descr">IT WAS A MISINPUT</p></div>
+        <!--An achievement you get for hacking 10 times-->
+        <div class="achievement" id="hackingAchievement3"><img src="Images/Achievements/hacking3.png"><p>Hacking!</p> <p class="descr">the dwarfs are after you. its too late.</p></div>
+      </div>
+    </div>
+    <!--A miscellaneous panel with references/tips-->
+    <div id="miscPanel">
+      <!--Aligns the buttons inside the miscellaneous panel-->
+      <div id="miscPanelButtonAlign">
+        <!--Tips button that shows tips & hides references-->
+        <button class="miscPanelButtons" onclick="playerWantsToSeeTips()">Tips</button>
+        <!--A button that shows references & hides tips-->
+        <button class="miscPanelButtons" onclick="playerWantsToSeeReferences()">References</button>
+        <!--A button that hides tips & references-->
+        <button class="miscPanelButtons" onclick="minimizeTipsOrReferences()">Minimize</button>
+        <!--A button that opens the hack panel-->
+        <button class="miscPanelButtons" onclick="playerWantsToSeeHackPanel()">Hax</button>
+      </div>
+      <!--A title that changes based off of whether there's tips/references on screen-->
+      <h2 class="subTitles" id="tipsOrReferencesTitle">Click the buttons above to see tips/references</h2>
+      <!--A div with a tip list inside-->
+      <div id="tips">
+        <ul>
+          <li>Buildings are really good unless you hate your fingers and want to break them spam clicking</li>
+          <li>Don't skip over exo trading and playstyles</li>
+          <li>There is no invisible button to the left and under this panel/the hack panel that is required to unlock a secret achievement that requires you to click it like 48 times and a bunch of other stuff</li>
+          <li>It is recommended you play on a wider screen so that nothing is squashed</li>
+        </ul>
+      </div>
+      <!--A div with a reference list inside-->
+      <div id="references">
+        <ul>
+          <li>Almost every texture in this game is drawn by me</li>
+          <li>The everything upgrade says "you achieved everything" in minecraft enchantment language</li>
+          <li>The uranium acid upgrade is a reference to a meme "i spilled my drink"</li>
+          <li>The radio is a reference to the song "i am a dwarf and im digging a hole"</li>
+          <li>The interdimentional sausage description is a reference to a calamity mod boss called Devourer of Gods, and his dialogue "You are no god, but i shall feast upon your essence regardless"</li>
+        </ul>
+      </div>
+    </div>
+    <!--A hack panel-->
+    <div id="hackPanel">
+      <!--A title and a div with a bunch of buttons that hack in ores-->
+      <h2 class="subTitles">Get ores</h2>
+      <div class="hacksButtonRow">
+        <button onclick="get1kOresHack()">+1k ores</button>
+        <button onclick="get10kOresHack()">+10k ores</button>
+        <button onclick="get100kOresHack()">+100k ores</button>
+        <button onclick="get1mOresHack()">+1m ores</button>
+        <button onclick="get100mOresHack()">+100m ores</button>
+        <button onclick="get1bOresHack()">+1b ores</button>
+        <button onclick="get100bOresHack()">+100b ores</button>
+        <button onclick="get1tOresHack()">+1t ores</button>
+        <button onclick="get100tOresHack()">+100t ores</button>
+      </div>
+      <!--A title and a div with a bunch of buttons that hack in exo shards-->
+      <h2 class="subTitles">Get exo shards</h2>
+      <div class="hacksButtonRow">
+        <button onclick="get1ExoShardHack()">+1 shards</button>
+        <button onclick="get3ExoShardsHack()">+3 shards</button>
+        <button onclick="get24ExoShardsHack()">+24 shards</button>
+        <button onclick="get36ExoShardsHack()">+36 shards</button>
+        <button onclick="get52ExoShardsHack()">+52 shards</button>
+        <button onclick="get100ExoShardsHack()">+100 shards</button>
+      </div>
+      <!--A title and a div with a bunch of buttons that hack in pickaxe clicks-->
+      <h2 class="subTitles">Get pickaxe clicks</h2>
+      <div class="hacksButtonRow">
+        <button onclick="get10PickaxeClicksHack()">+10 clicks</button>
+        <button onclick="get100PickaxeClicksHack()">+100 clicks</button>
+        <button onclick="get500PickaxeClicksHack()">+500 clicks</button>
+        <button onclick="get777PickaxeClicksHack()">+777 clicks</button>
+        <button onclick="get1kPickaxeClicksHack()">+1000 clicks</button>
+        <button onclick="get1mPickaxeClicksHack()">+1m clicks</button>
+      </div>
+      <!--A title and a div with a bunch of miscellaneous hacking buttons-->
+      <h2 class="subTitles">Misc</h2>
+      <div class="hacksButtonRow">
+        <button onclick="get10ofEachBuilding()">+10 of each building</button>
+        <button onclick="get100ofEachBuilding()">+100 of each building</button>
+        <button onclick="everythingMultiplierHack()">2x income from everything</button>
+      </div>
+    </div>
+    <!--An invisible button required for 2 achievements-->
+    <button id="randomButton" onclick="playerClickedRandomButton()"></button>
+    <script src="script.js"></script>
+  </body>
+</html>
